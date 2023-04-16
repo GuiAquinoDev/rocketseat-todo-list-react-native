@@ -7,8 +7,20 @@ type Props = {
 
 }
 
+export const Container = styled.View`
+    flex-direction: row;
+    gap: 8px;
+`
+
 export const Text = styled.Text<Props>`
     color: ${ ({ theme, type }) => type === 'SELECTED' ? theme.COLORS.BLUE : theme.COLORS.PURPLE };
     font-weight: ${({ theme }) => theme.FONT_FAMILY.BOLD };
-    font-size: ${({ theme }) => theme.FONT_SIZE.SM} ;
+    font-size: ${({ theme }) => theme.FONT_SIZE.SM}px ;
+`
+
+export const TaskNumber = styled.Text`
+    color: ${({ theme }) => theme.COLORS.GRAY_200 };
+    background: ${({ theme }) => theme.COLORS.GRAY_400};
+    padding: 2px 8px;
+    border-radius: 999px;
 `

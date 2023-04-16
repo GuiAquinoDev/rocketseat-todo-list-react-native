@@ -1,15 +1,16 @@
-import { ButtonTypeStyleProps, Text } from "./styles";
+import { ButtonTypeStyleProps, TaskNumber, Text, Container } from "./styles";
 
 type Props = {
-    title: string;
-    type?: ButtonTypeStyleProps;
+  title: string;
+  type?: ButtonTypeStyleProps;
+  number?: number;
+};
 
-}
-
-export function TaskText({title, type='SELECTED'}: Props ){
-    return (
-        <Text type={type}>
-            {title}
-        </Text>
-    )
+export function TaskText({ title, type = "SELECTED", number }: Props) {
+  return (
+    <Container>
+      <Text type={type}>{title}</Text>
+      <TaskNumber>{number}</TaskNumber>
+    </Container>
+  );
 }
