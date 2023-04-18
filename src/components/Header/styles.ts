@@ -4,7 +4,7 @@ export const Container = styled.View`
     width: 100%;
     height: 127px;
 
-    flex-direction: row;
+    align-items: center;
     justify-content: center;
 
     background-color: ${({ theme }) => theme.COLORS.GRAY_700};
@@ -13,5 +13,4 @@ export const Container = styled.View`
 export const Logo = styled.Image`
     width: 110.34px;
     height: 32px;
-    margin: 24px;
 `

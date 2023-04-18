@@ -9,15 +9,21 @@ export const Container = styled(SafeAreaView)`
 `
 
 export const Form = styled.View`
-  width: 100%;
-  position: absolute;
-  top: 110px;
   z-index: 1;
   
   flex-direction: row;
-  justify-content: center;
 
   border-radius: 6px;
   padding: 24px;
 
+`
+
+export const TaskContainer = styled.View`
+  position: relative;
+  top: -50px;
+  
+  flex: 1;
+  background-color: ${({ theme }) => theme.COLORS.GRAY_600};  
+
+  padding: 24px;
 `

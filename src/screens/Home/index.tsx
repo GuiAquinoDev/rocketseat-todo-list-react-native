@@ -3,8 +3,9 @@ import { FlatList } from "react-native";
 import { ButtonIcon } from "../../components/ButtonIcon ";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
+import { TaskBox } from "../../components/TaskBox";
 import { TaskSummary } from "../../components/TaskSummary";
-import { Container, Form } from "./style";
+import { Container, Form, TaskContainer } from "./style";
 
 export function Home() {
 
@@ -18,7 +19,6 @@ export function Home() {
     }
   }
 
-
   return (
     <Container>
       <Header />
@@ -27,6 +27,7 @@ export function Home() {
         <Input
           placeholder="Adicione uma nova tarefa"
           value={task}
+          onChangeText={setTask}
           onSubmitEditing={handleNewTask}
         />
         <ButtonIcon
@@ -35,9 +36,21 @@ export function Home() {
         />
       </Form>
 
-      <TaskSummary />
+      <TaskContainer>
+          
+        <TaskSummary />
+
+        <FlatList
+        data={taskList}
+        keyExtractor={item => item}
+        renderItem={({ item }) => <TaskBox
+        key={item}
+        title={item} />}
+        />
+      </TaskContainer>
 
       
     </Container>
   );
 }
+
