@@ -1,18 +1,21 @@
-import { TouchableOpacityProps } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons'
+import { TouchableOpacityProps } from "react-native";
+import { MaterialIcons, Ionicons } from "@expo/vector-icons";
 
-import { Container, Icon } from './styles';
+import { Container, MaterialIcon, IoniconIcon } from "./styles";
 
 type Props = TouchableOpacityProps & {
-  icon: keyof typeof MaterialIcons.glyphMap;
-}
+  icon: keyof typeof MaterialIcons.glyphMap | keyof typeof Ionicons.glyphMap;
+  iconType: "material" | "ionic";
+};
 
-export function ButtonIcon({ icon, ...rest }: Props) {
-  return(
-    <Container {...rest}>
-    <Icon 
-      name={icon}
-    />
+export function ButtonIcon({ icon, iconType, ...rest }: Props) {
+  return (
+    <Container {...rest} type={iconType}>
+      {iconType === "material" ? (
+        <MaterialIcon name={icon} />
+      ) : (
+        <IoniconIcon name={icon} />
+      )}
     </Container>
   );
 }
