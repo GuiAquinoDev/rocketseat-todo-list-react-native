@@ -10,6 +10,8 @@ import { Container, Form, TaskContainer, TaskSummaryList } from "./style";
 export function Home() {
   const [task, setTask] = useState("");
   const [taskList, setTaskList] = useState<string[]>([]);
+  const [isChecked, setChecked] = useState(false);
+  const [taskComplete, setTaskComplete] = useState(0);
 
   function handleNewTask() {
     if (task.length > 0) {
@@ -19,18 +21,29 @@ export function Home() {
   }
 
   function handleTaskRemove(taskList: string) {
-
     Alert.alert("Remover", `Tem certeza que deseja remover esta tarefa ?`, [
       {
-        text: 'Sim',
-        onPress: () => setTaskList(prevState => prevState.filter(task => task !== taskList))
+        text: "Sim",
+        onPress: () =>
+          setTaskList((prevState) =>
+            prevState.filter((task) => task !== taskList)
+          ),
       },
       {
-        text: 'Não',
-        style: 'cancel'
-      }
-    ])
+        text: "Não",
+        style: "cancel",
+      },
+    ]);
+  }
 
+  function handleTaskComplete(taskItem: boolean) {
+    setChecked(taskItem);
+
+    if (taskItem) {
+      setTaskComplete(taskComplete + 1)
+    } else {
+      setTaskComplete(taskComplete - 1)
+    }
   }
 
   return (
@@ -52,15 +65,21 @@ export function Home() {
         </Form>
 
         <TaskSummaryList>
-          <TaskText title="Criadas" type="SELECTED" number={0} />
-          <TaskText title="Concluídas" type="UNSELECTED" number={1} />
+          <TaskText title="Criadas" type="SELECTED" number={taskList.length} />
+          <TaskText title="Concluídas" type="UNSELECTED" number={taskComplete} />
         </TaskSummaryList>
 
         <FlatList
           data={taskList}
           keyExtractor={(item) => item}
           renderItem={({ item }) => (
-            <TaskBox key={item} title={item} onRemove={()=> handleTaskRemove(item)} />
+            <TaskBox
+              key={item}
+              title={item}
+              isChecked={isChecked}
+              onRemove={() => handleTaskRemove(item)}
+              onCompleted={(taskItem) => handleTaskComplete(taskItem)}
+            />
           )}
         />
       </TaskContainer>

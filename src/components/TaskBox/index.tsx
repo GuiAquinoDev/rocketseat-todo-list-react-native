@@ -5,17 +5,21 @@ import { Container, TaskCheckBox } from "./styles";
 
 type Props = {
   title: string;
+  isChecked: boolean;
   onRemove: () => void;
+  onCompleted: (taskItem: boolean) => void;
 };
 
-export function TaskBox({ title, onRemove }: Props) {
-  const [isChecked, setChecked] = useState(false);
+export function TaskBox({ title, onRemove, isChecked, onCompleted }: Props) {
 
 
 
   return (
     <Container>
-      <TaskCheckBox value={isChecked} onValueChange={setChecked} />
+      <TaskCheckBox
+        value={isChecked}
+        onValueChange={onCompleted}
+      />
       <Text isChecked={isChecked}>{title}</Text>
 
       <ButtonIcon
