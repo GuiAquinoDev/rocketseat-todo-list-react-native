@@ -1,6 +1,11 @@
 import styled from 'styled-components/native'
 import CheckBox from 'expo-checkbox';
 
+
+type Props = {
+    isChecked: boolean
+}
+
 export const Container = styled.View`
     width: 100%;
     height: 64px;
@@ -15,7 +20,9 @@ export const Container = styled.View`
     margin-bottom: 16px;
 `
 
-export const TaskCheckBox = styled(CheckBox)`
+export const TaskCheckBox = styled(CheckBox).attrs(({ value, theme }) => ({
+    color: value ? theme.COLORS.PURPLE_DARK : '',
+}))`
     border-radius: 50px;
     border: ${({ theme }) => theme.COLORS.BLUE};
     
@@ -23,7 +30,8 @@ export const TaskCheckBox = styled(CheckBox)`
     margin-left:12px;
 `
 
-export const Text = styled.Text`
+export const Text = styled.Text<Props>`
     color: ${({ theme }) => theme.COLORS.GRAY_100};
     flex: 1;
+    text-decoration-line: ${({ isChecked }) => isChecked ? 'line-through' : 'none'}
 `

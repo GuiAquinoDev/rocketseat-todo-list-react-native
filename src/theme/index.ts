@@ -14,7 +14,8 @@ export default {
       GRAY_100: '#F2F2F2',
       
       PURPLE: '#8284FA',
-      
+      PURPLE_DARK: '#5E60CE',
+
       BLUE_DARK: '#1E6F9F',
       BLUE: '#4EA8DE'
 

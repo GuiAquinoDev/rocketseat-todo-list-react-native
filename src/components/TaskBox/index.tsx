@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import theme from '../../theme';
 import { ButtonIcon } from '../ButtonIcon ';
 import { Text } from "./styles";
 import {Container, TaskCheckBox} from "./styles";
@@ -16,9 +17,9 @@ export function TaskBox({ title }: Props) {
     <Container>
       <TaskCheckBox
         value={isChecked}
-        onValueChange={setChecked}
-      />
-      <Text>
+        onValueChange={setChecked}    
+        />
+      <Text isChecked={isChecked}>
         {title}
       </Text>
 
