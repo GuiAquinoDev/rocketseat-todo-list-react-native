@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FlatList } from "react-native";
+import { FlatList, Alert } from "react-native";
 import { ButtonIcon } from "../../components/ButtonIcon ";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
@@ -16,6 +16,21 @@ export function Home() {
       setTaskList([...taskList, task]);
       setTask("");
     }
+  }
+
+  function handleTaskRemove(taskList: string) {
+
+    Alert.alert("Remover", `Tem certeza que deseja remover esta tarefa ?`, [
+      {
+        text: 'Sim',
+        onPress: () => setTaskList(prevState => prevState.filter(task => task !== taskList))
+      },
+      {
+        text: 'Não',
+        style: 'cancel'
+      }
+    ])
+
   }
 
   return (
@@ -44,7 +59,9 @@ export function Home() {
         <FlatList
           data={taskList}
           keyExtractor={(item) => item}
-          renderItem={({ item }) => <TaskBox key={item} title={item} />}
+          renderItem={({ item }) => (
+            <TaskBox key={item} title={item} onRemove={()=> handleTaskRemove(item)} />
+          )}
         />
       </TaskContainer>
     </Container>
