@@ -8,10 +8,16 @@ export const Container = styled(SafeAreaView)`
   background-color: ${({ theme }) => theme.COLORS.GRAY_600};
 `
 
+export const TaskContainer = styled.View`
+  flex: 1;
+
+  justify-content: center;
+  padding: 24px;
+`
+
 export const Form = styled.View`
   width: 100%;
   z-index: 1;
-  
   position: relative;
   top: -50px;
   flex-direction: row;
@@ -20,13 +26,10 @@ export const Form = styled.View`
   border-radius: 6px;
 `
 
-export const TaskContainer = styled.View`
-  padding: 24px;
-`
-
 export const TaskSummaryList = styled.View`
-
+    width: 100%;
+    
     flex-direction: row;
     justify-content: space-between;
-    margin: 0 0 20px 0;
+    margin-bottom: 20px;
 `

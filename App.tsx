@@ -1,7 +1,7 @@
 import { ThemeProvider } from "styled-components/native";
 import { Home } from "./src/screens/Home";
 import theme from "./src/theme";
-import { useFonts, Inter_400Regular, Inter_700Bold} from '@expo-google-fonts/inter';
+import { useFonts, Inter_400Regular, Inter_700Bold } from '@expo-google-fonts/inter';
 import { Loading } from "./src/components/Loading";
 
 

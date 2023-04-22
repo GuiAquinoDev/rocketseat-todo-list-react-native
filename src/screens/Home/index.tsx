@@ -4,6 +4,7 @@ import { ButtonIcon } from "../../components/ButtonIcon ";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
 import { TaskBox } from "../../components/TaskBox";
+import { TaskEmpty } from "../../components/TaskEmpty";
 import { TaskText } from "../../components/TaskText";
 import { Container, Form, TaskContainer, TaskSummaryList } from "./style";
 
@@ -40,9 +41,9 @@ export function Home() {
     setChecked(taskItem);
 
     if (taskItem) {
-      setTaskComplete(taskComplete + 1)
+      setTaskComplete(taskComplete + 1);
     } else {
-      setTaskComplete(taskComplete - 1)
+      setTaskComplete(taskComplete - 1);
     }
   }
 
@@ -50,25 +51,25 @@ export function Home() {
     <Container>
       <Header />
       <TaskContainer>
-        <Form>
-          <Input
-            placeholder="Adicione uma nova tarefa"
-            value={task}
-            onChangeText={setTask}
-            onSubmitEditing={handleNewTask}
-          />
-          <ButtonIcon
-            icon="add-circle-outline"
-            iconType="material"
-            onPress={handleNewTask}
-          />
-        </Form>
+      <Form>
+        <Input
+          placeholder="Adicione uma nova tarefa"
+          value={task}
+          onChangeText={setTask}
+          onSubmitEditing={handleNewTask}
+        />
+        <ButtonIcon
+          icon="add-circle-outline"
+          iconType="material"
+          onPress={handleNewTask}
+        />
+      </Form>
 
-        <TaskSummaryList>
-          <TaskText title="Criadas" type="SELECTED" number={taskList.length} />
-          <TaskText title="Concluídas" type="UNSELECTED" number={taskComplete} />
-        </TaskSummaryList>
-
+      <TaskSummaryList>
+        <TaskText title="Criadas" type="SELECTED" number={taskList.length} />
+        <TaskText title="Concluídas" type="UNSELECTED" number={taskComplete} />
+      </TaskSummaryList>
+      
         <FlatList
           data={taskList}
           keyExtractor={(item) => item}
@@ -81,7 +82,18 @@ export function Home() {
               onCompleted={(taskItem) => handleTaskComplete(taskItem)}
             />
           )}
+          ListEmptyComponent={() => (
+            <TaskEmpty
+              icon="clipboard-text-multiple-outline"
+              title="Você ainda não tem tarefas cadastradas"
+              subtitle="Crie tarefas e organize seus itens a fazer"
+            />
+          )}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={[{ paddingBottom: 100 }, taskList.length === 0 && { flex: 1 }]}
+       
         />
+    
       </TaskContainer>
     </Container>
   );

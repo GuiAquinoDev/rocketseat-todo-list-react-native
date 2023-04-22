@@ -1,13 +1,11 @@
 import styled from 'styled-components/native'
 import CheckBox from 'expo-checkbox';
-import { TouchableOpacity } from 'react-native';
-
 
 type Props = {
     isChecked: boolean
 }
 
-export const Container = styled(TouchableOpacity)`
+export const Container = styled.View`
     width: 100%;
     height: 64px;
 
@@ -32,7 +30,8 @@ export const TaskCheckBox = styled(CheckBox).attrs(({ value, theme }) => ({
 `
 
 export const Text = styled.Text<Props>`
-    color: ${({ theme }) => theme.COLORS.GRAY_100};
     flex: 1;
+    
+    color: ${({ theme }) => theme.COLORS.GRAY_100};
     text-decoration-line: ${({ isChecked }) => isChecked ? 'line-through' : 'none'}
 `

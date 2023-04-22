@@ -12,8 +12,6 @@ type Props = {
 
 export function TaskBox({ title, onRemove, isChecked, onCompleted }: Props) {
 
-
-
   return (
     <Container>
       <TaskCheckBox

@@ -6,7 +6,7 @@ import { MaterialIcons, Ionicons } from '@expo/vector-icons'
 type ButtonTypeStyleProps = 'material' | 'ionic';
 
 type Props = {
-  type: ButtonTypeStyleProps
+  type: ButtonTypeStyleProps;
 }
 
 
@@ -19,7 +19,6 @@ export const Container = styled(TouchableOpacity)<Props>`
   background-color: ${({ theme, type }) => type === 'material' ?
     theme.COLORS.BLUE_DARK : theme.COLORS.GRAY_500 };
   border-radius: 6px;
-
 `;
 
 export const MaterialIcon = styled(MaterialIcons).attrs(({ theme }) => ({
@@ -29,6 +28,6 @@ export const MaterialIcon = styled(MaterialIcons).attrs(({ theme }) => ({
 
 
 export const IoniconIcon = styled(Ionicons).attrs(({ theme }) => ({
-  size: 20,
+  size: 24,
   color: theme.COLORS.GRAY_300,
 }))``;
